@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -25,17 +26,21 @@ export function useCollection<T = DocumentData>(query: Query<T> | null) {
       query,
       (snapshot: QuerySnapshot<T>) => {
         const items = snapshot.docs.map((doc) => ({
-          ...doc.data(),
+          ...(doc.data() as any),
           id: doc.id,
         }));
         setData(items);
         setLoading(false);
       },
       async (serverError) => {
+        // Attempt to extract path for better debugging context
+        const queryPath = (query as any)._query?.path?.toString() || 'unknown collection';
+        
         const permissionError = new FirestorePermissionError({
-          path: (query as any)._query?.path?.toString() || 'unknown',
+          path: queryPath,
           operation: 'list',
         });
+        
         errorEmitter.emit('permission-error', permissionError);
         setError(permissionError);
         setLoading(false);
