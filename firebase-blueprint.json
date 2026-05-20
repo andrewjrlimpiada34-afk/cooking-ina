@@ -1,0 +1,117 @@
+
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "User account information and culinary preferences.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "isAdmin": { "type": "boolean", "default": false },
+        "ingredients": { "type": "array", "items": { "type": "string" }, "description": "The user's currently tracked pantry ingredients." },
+        "theme": { "type": "string", "enum": ["default", "seafood", "grilled"], "default": "default", "description": "The user's preferred UI theme." }
+      },
+      "required": ["uid", "email"]
+    },
+    "SavedRecipe": {
+      "title": "Saved Recipe",
+      "description": "A recipe saved by the user to their personal vault.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "matchPercentage": { "type": "number" },
+        "ingredientsRequired": { "type": "array", "items": { "type": "string" } },
+        "missingIngredients": { "type": "array", "items": { "type": "string" } },
+        "instructions": { "type": "array", "items": { "type": "string" } },
+        "estimatedTimeMinutes": { "type": "number" },
+        "savedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name"]
+    },
+    "RecipeReview": {
+      "title": "Recipe Review",
+      "description": "A public review and rating for a specific recipe.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "userPhoto": { "type": "string" },
+        "rating": { "type": "number", "minimum": 1, "maximum": 5 },
+        "comment": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "rating", "comment"]
+    },
+    "DiaryEntry": {
+      "title": "Diary Entry",
+      "description": "A culinary memory shared by a user, including a photo and caption.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "userPhoto": { "type": "string" },
+        "imageUrl": { "type": "string", "description": "Cloudinary hosted image URL." },
+        "caption": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "imageUrl", "caption"]
+    },
+    "Announcement": {
+      "title": "Public Announcement",
+      "description": "Broadcast messages from the admin.",
+      "type": "object",
+      "properties": {
+        "message": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "active": { "type": "boolean", "default": true }
+      },
+      "required": ["message"]
+    },
+    "DevelopersChoice": {
+      "title": "Developer's Choice",
+      "description": "Dishes featured on the landing page carousel.",
+      "type": "object",
+      "properties": {
+        "description": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "imageHint": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["description", "imageUrl"]
+    }
+  },
+  "auth": {
+    "providers": ["email", "google"],
+    "notes": "Ensure the Cloud Workstation domain is added to Authorized Domains in Firebase Console."
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "The user's profile document."
+    },
+    "/users/{userId}/savedRecipes/{recipeId}": {
+      "schema": "SavedRecipe",
+      "description": "The user's collection of saved recipes."
+    },
+    "/recipes/{recipeSlug}/reviews/{userId}": {
+      "schema": "RecipeReview",
+      "description": "Public reviews for a specific dish, keyed by a slug of the recipe name."
+    },
+    "/diaryEntries/{entryId}": {
+      "schema": "DiaryEntry",
+      "description": "Global collection of public cooking diary entries."
+    },
+    "/announcements/{id}": {
+      "schema": "Announcement",
+      "description": "Public announcements collection."
+    },
+    "/developersChoice/{id}": {
+      "schema": "DevelopersChoice",
+      "description": "Featured landing page dishes."
+    }
+  }
+}

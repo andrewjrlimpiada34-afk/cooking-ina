@@ -1,0 +1,34 @@
+{
+  "placeholderImages": [
+    {
+      "id": "adobo",
+      "description": "Savory Chicken Adobo",
+      "imageUrl": "https://picsum.photos/seed/culinary-adobo/800/1000",
+      "imageHint": "gourmet chicken"
+    },
+    {
+      "id": "sinigang",
+      "description": "Tangy Pork Sinigang",
+      "imageUrl": "https://panlasangpinoy.com/wp-content/uploads/2014/12/Pork-Sinigang-Recipe-1.jpg",
+      "imageHint": "pork sinigang"
+    },
+    {
+      "id": "pares",
+      "description": "Braised Beef Pares",
+      "imageUrl": "https://picsum.photos/seed/culinary-pares/800/1000",
+      "imageHint": "beef brisket"
+    },
+    {
+      "id": "karekare",
+      "description": "Rich Kare-Kare",
+      "imageUrl": "https://picsum.photos/seed/culinary-karekare/800/1000",
+      "imageHint": "peanut stew"
+    },
+    {
+      "id": "halohalo",
+      "description": "Classic Halo-Halo",
+      "imageUrl": "https://picsum.photos/seed/culinary-halohalo/800/1000",
+      "imageHint": "colorful dessert"
+    }
+  ]
+}

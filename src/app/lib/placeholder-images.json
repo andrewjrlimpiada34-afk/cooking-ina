@@ -1,0 +1,35 @@
+
+{
+  "placeholderImages": [
+    {
+      "id": "adobo",
+      "description": "Savory Chicken Adobo",
+      "imageUrl": "https://picsum.photos/seed/dish-adobo-77/800/1000",
+      "imageHint": "chicken adobo"
+    },
+    {
+      "id": "sinigang",
+      "description": "Tangy Pork Sinigang",
+      "imageUrl": "https://panlasangpinoy.com/wp-content/uploads/2014/12/Pork-Sinigang-Recipe-1.jpg",
+      "imageHint": "pork sinigang"
+    },
+    {
+      "id": "pares",
+      "description": "Braised Beef Pares",
+      "imageUrl": "https://picsum.photos/seed/dish-pares-55/800/1000",
+      "imageHint": "beef stew"
+    },
+    {
+      "id": "karekare",
+      "description": "Rich Kare-Kare",
+      "imageUrl": "https://picsum.photos/seed/dish-karekare-99/800/1000",
+      "imageHint": "peanut curry"
+    },
+    {
+      "id": "halohalo",
+      "description": "Classic Halo-Halo",
+      "imageUrl": "https://picsum.photos/seed/dish-halohalo-11/800/1000",
+      "imageHint": "shaved ice"
+    }
+  ]
+}
