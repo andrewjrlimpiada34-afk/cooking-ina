@@ -1,15 +1,14 @@
 'use client';
 
 /**
- * Firebase configuration object.
- * These values are now hardcoded as per the project requirements to ensure
- * immediate connectivity to the Firebase backend.
+ * Firebase configuration object for the new "cooking-ina-new" project.
  */
 export const firebaseConfig = {
-  apiKey: "AIzaSyB5tDowBywZHHCTkT0t_3Li-MPTMOzfc6s",
-  authDomain: "studio-1706230539-f99f8.firebaseapp.com",
-  projectId: "studio-1706230539-f99f8",
-  storageBucket: "studio-1706230539-f99f8.firebasestorage.app",
-  messagingSenderId: "909438546613",
-  appId: "1:909438546613:web:da56756e5292e6851304fc"
+  apiKey: "AIzaSyCoIOwbjKM0PARXzh5LlD1LTEWIYrIcebA",
+  authDomain: "cooking-ina-new.firebaseapp.com",
+  projectId: "cooking-ina-new",
+  storageBucket: "cooking-ina-new.firebasestorage.app",
+  messagingSenderId: "1080553505411",
+  appId: "1:1080553505411:web:edef3e1f48453b7d9111b6",
+  measurementId: "G-4804DV4VZJ"
 };
