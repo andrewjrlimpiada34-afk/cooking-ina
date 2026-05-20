@@ -43,8 +43,6 @@ const RecipeGeneratorOutputSchema = z.object({
 });
 export type RecipeGeneratorOutput = z.infer<typeof RecipeGeneratorOutputSchema>;
 
-const SPOONACULAR_API_KEY = process.env.SPOONACULAR_API_KEY;
-
 export async function generateRecipes(
   input: RecipeGeneratorInput
 ): Promise<RecipeGeneratorOutput> {
@@ -58,6 +56,8 @@ const recipeGeneratorFlow = ai.defineFlow(
     outputSchema: RecipeGeneratorOutputSchema,
   },
   async (input) => {
+    const SPOONACULAR_API_KEY = process.env.SPOONACULAR_API_KEY;
+    
     if (!SPOONACULAR_API_KEY) {
       throw new Error('SPOONACULAR_API_KEY is not configured in environment variables.');
     }
@@ -70,7 +70,8 @@ const recipeGeneratorFlow = ai.defineFlow(
     );
     
     if (!findResponse.ok) {
-      throw new Error('Failed to fetch recipes from Spoonacular');
+      const errorData = await findResponse.json().catch(() => ({}));
+      throw new Error(errorData.message || `Spoonacular API error: ${findResponse.status}`);
     }
 
     const basicRecipes = await findResponse.json();
